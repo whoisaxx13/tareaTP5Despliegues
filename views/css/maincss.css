@@ -1,0 +1,42 @@
+article{
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid black;
+    margin-bottom: 1%;
+    align-items: center;
+}
+article form{
+    padding: 1%;
+}
+article .img{
+    flex: 1 5%;
+    
+    margin: 1%;
+}
+article .img img{
+    width: 80%;
+    border: 1px solid black;
+}
+article .texto{
+    flex: 1 80%;
+}
+article .texto .arriba p{
+    width: 90%;
+}
+article .aparte{
+    flex: 1 100%;
+    padding: 1%;
+}
+.nus{
+    flex: 1 100%;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1%;
+}
+.nus h1{
+    flex: 1 100%;
+}
+.rest{
+    flex: 1 100%;
+    padding: 1%;
+}

@@ -1,0 +1,24 @@
+<?php
+require_once("db.php");
+require_once('models/ArtRepository.php');
+require_once('models/UserRepository.php');
+require_once('models/UserModel.php');
+
+if(isset($_POST['getDataCarrito'])){
+    ArtRepository::getArtsCarrito(UserRepository::getPedido($_POST['idus']));
+}
+if(isset($_POST['getDataUsers'])&&UserRepository::getUsuario($_POST['idus'])->getRol()==1){
+    UserRepository::getUsuarios();
+}
+if(isset($_POST['getPedidos'])){
+    UserRepository::getPedidos($_POST['idus']);
+}
+if(isset($_POST['getData'])){
+    if(isset($_POST['idus'])){
+        ArtRepository::getArts($_POST['idus']);
+    }else{
+        ArtRepository::getArts(0);
+    }
+}
+require_once("controllers/mainController.php");
+?>

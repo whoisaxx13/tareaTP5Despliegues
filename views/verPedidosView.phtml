@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="views/css/maincss.css">
+</head>
+<body>
+    <a href="index.php">Salir</a> <br>
+    <div>
+        
+        <div class="prueba">
+
+        </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var start=0;
+        var limit=4;
+        var reachedMax=false;
+
+        $(window).scroll(function (){
+            if($(window).scrollTop()==$(document).height()- $(window).height()){
+                getData();
+            }
+        })
+
+        $(document).ready(function () {
+            getData();
+        });
+
+        function getData(){
+            if(reachedMax)
+                return;
+
+            $.ajax({
+                url: 'index.php',
+                method: 'POST',
+                dataType: 'text',
+                data: {
+                    getPedidos:1,
+                    start: start,
+                    idus: <?php echo $_SESSION['user']->getId() ?>,
+                }, 
+                 success: function(response){
+                    if(response== "reachedMax"){
+                        reachedMax=true;
+                    }else{
+                        start += limit;
+                        $(".prueba").append(response);
+                    }
+                 }
+            })
+        }
+    </script>
+    <?php
+    
+    ?>
+</body>
+</html>
